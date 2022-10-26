@@ -5,8 +5,8 @@ const { User } = require('../models');
 
 const validateBody = (params) => {
   const schema = Joi.object({
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
+     email: Joi.string().email().required(),
+    password: Joi.string().required(),
   });
 
   const { error, value } = schema.validate(params);
@@ -25,10 +25,10 @@ const validateLogin = async ({ email, password }) => {
   const user = await User.findOne({ where: { email } });
 
   if (!user || user.password !== password) {
-      const e = new Error('Usuário ou senha não válidos!');
-      e.message = 'Invalid fields';
-      e.status = 400;
-      throw e;
+    const e = new Error('Usuário ou senha não válidos!');
+    e.message = 'Invalid fields';
+    e.status = 400;
+    throw e;
   }
 
   const { password: _, ...userWithoutPassword } = user.dataValues;
@@ -38,16 +38,4 @@ const validateLogin = async ({ email, password }) => {
   return token;
 };
 
-const validateToken = (token) => {
-  if (!token) {
-      const e = new Error('Token obrigatório!');
-      e.name = 'Token obrigatório';
-      throw e;
-  }
-
-  const user = jwtUtil.validateToken(token);
-
-  return user;
-};
-
-module.exports = { validateBody, validateLogin, validateToken };
+module.exports = { validateBody, validateLogin };

@@ -1,8 +1,11 @@
 const express = require('express');
 const userController = require('../controllers/userController');
+const { validateToken } = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.post('/', userController.user);
+router.post('/', userController.create);
+
+router.get('/', validateToken, userController.getAll);
 
 module.exports = router;

@@ -43,4 +43,9 @@ const validateEmail = async (body) => {
   return token;
 };
 
-module.exports = { validateBody, validateEmail };
+const getAll = async () => {
+  const users = await User.findAll({ attributes: { exclude: ['password'] } });
+  return users;
+};
+
+module.exports = { validateBody, validateEmail, getAll };

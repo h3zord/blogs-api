@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 
-const user = async (req, res) => {
+const create = async (req, res) => {
   const body = userService.validateBody(req.body);
 
   const token = await userService.validateEmail(body);
@@ -8,4 +8,10 @@ const user = async (req, res) => {
   res.status(201).json({ token });
 };
 
-module.exports = { user };
+const getAll = async (_req, res) => {
+  const users = await userService.getAll();
+  console.log(users);
+  res.status(200).json(users);
+};
+
+module.exports = { create, getAll };
