@@ -20,8 +20,8 @@ const BlogPost = (sequelize, DataTypes) => {
     BlogPost.belongsTo(models.User, {
       foreignKey: 'user_id',
       as: 'users',
-    })
-  }
+    });
+  };
 
   return BlogPost;
 };
