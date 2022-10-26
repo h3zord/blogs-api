@@ -8,4 +8,6 @@ router.use(validateToken);
 
 router.post('/', categoryController.create);
 
+router.get('/', categoryController.getAll);
+
 module.exports = router;

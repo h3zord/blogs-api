@@ -24,4 +24,10 @@ const create = async (body) => {
   return category.dataValues;
 };
 
-module.exports = { validateBody, create };
+const getAll = async () => {
+  const categories = await Category.findAll();
+
+  return categories;
+};
+
+module.exports = { validateBody, create, getAll };
