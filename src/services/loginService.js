@@ -3,13 +3,13 @@ const jwtUtil = require('../utils/jwtUtil');
 
 const { User } = require('../models');
 
-const validateBody = (params) => {
+const validateBody = (body) => {
   const schema = Joi.object({
      email: Joi.string().email().required(),
     password: Joi.string().required(),
   });
 
-  const { error, value } = schema.validate(params);
+  const { error, value } = schema.validate(body);
 
   if (error) {
     const e = new Error('Usuário ou senha inválidos');
@@ -21,7 +21,8 @@ const validateBody = (params) => {
   return value;
 };
 
-const validateLogin = async ({ email, password }) => {
+const validateLogin = async (body) => {
+  const { email, password } = body;
   const user = await User.findOne({ where: { email } });
 
   if (!user || user.password !== password) {
