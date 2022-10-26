@@ -8,7 +8,7 @@ const create = async (req, res) => {
   res.status(201).json(newCategory);
 };
 
-const getAll = async (req, res) => {
+const getAll = async (_req, res) => {
   const categories = await categoryService.getAll();
 
   res.status(200).json(categories);
