@@ -4,7 +4,7 @@ const { validateToken } = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.post('/', userController.create);
+router.post('/', userController.insert);
 
 router.use(validateToken);
 

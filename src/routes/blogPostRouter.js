@@ -1,13 +1,13 @@
 const express = require('express');
-const categoryController = require('../controllers/categoryController');
+const blogPostController = require('../controllers/blogPostController');
 const { validateToken } = require('../middlewares/auth');
 
 const router = express.Router();
 
 router.use(validateToken);
 
-router.post('/', categoryController.insert);
+router.post('/', blogPostController.insert);
 
-router.get('/', categoryController.getAll);
+router.get('/', blogPostController.getAll);
 
 module.exports = router;

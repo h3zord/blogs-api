@@ -20,13 +20,15 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       published: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       }
     })
   },

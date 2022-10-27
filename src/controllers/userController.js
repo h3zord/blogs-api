@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 
-const create = async (req, res) => {
+const insert = async (req, res) => {
   const body = userService.validateBody(req.body);
 
   const token = await userService.validateEmail(body);
@@ -22,4 +22,4 @@ const findById = async (req, res) => {
   res.status(200).json(user);
 };
 
-module.exports = { create, getAll, findById };
+module.exports = { insert, getAll, findById };

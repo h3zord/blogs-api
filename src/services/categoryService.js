@@ -19,7 +19,7 @@ const validateBody = (body) => {
   return value;
 };
 
-const create = async (body) => {
+const insert = async (body) => {
   const category = await Category.create(body);
   return category.dataValues;
 };
@@ -30,4 +30,4 @@ const getAll = async () => {
   return categories;
 };
 
-module.exports = { validateBody, create, getAll };
+module.exports = { validateBody, insert, getAll };
