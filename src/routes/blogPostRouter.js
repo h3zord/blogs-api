@@ -10,6 +10,8 @@ router.post('/', blogPostController.insert);
 
 router.get('/', blogPostController.getAll);
 
+router.get('/search', blogPostController.findByQuery);
+
 router.get('/:id', blogPostController.findById);
 
 router.put('/:id', blogPostController.updateById);

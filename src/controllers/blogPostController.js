@@ -42,4 +42,12 @@ const deleteById = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = { insert, getAll, findById, updateById, deleteById };
+const findByQuery = async (req, res) => {
+  const { q } = req.query;
+  
+  const result = await blogPostService.findByQuery(q);
+  console.log(result);
+  res.status(200).json(result);
+};
+
+module.exports = { insert, getAll, findById, updateById, deleteById, findByQuery };

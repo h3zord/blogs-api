@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { Op } = require('sequelize');
 const { sequelize } = require('../models');
 
 const { BlogPost, Category, PostCategory, User } = require('../models');
@@ -117,7 +118,7 @@ const updateById = async (postId, body) => {
 
   const blogPost = await BlogPost.findByPk(postId, { 
     include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
-      { model: Category, as: 'categories', through: { attributes: [] } }],
+    { model: Category, as: 'categories', through: { attributes: [] } }],
   });
   return blogPost;
 };
@@ -147,6 +148,29 @@ const deleteById = async (id) => {
   await BlogPost.destroy({ where: { id } });
 };
 
+const findByQuery = async (query) => {
+  if (!query) {
+    const blogPosts = await BlogPost.findAll({
+      include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } }],
+    });
+
+    return blogPosts;
+  }
+
+  const blogPosts = await BlogPost.findAll({
+    where: {
+      [Op.or]: [{ title: { [Op.like]: `%${query}%` } }, { content: { [Op.like]: `%${query}%` } }],
+    },
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+    { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+
+  if (!blogPosts) return [];
+
+  return blogPosts;
+};
+
 module.exports = {
    validateBody, 
    validateCategories, 
@@ -157,4 +181,5 @@ module.exports = {
    validateBodyUpdate,
    validateAuthorization,
    deleteById,
+   findByQuery,
 };
