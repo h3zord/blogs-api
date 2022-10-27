@@ -17,4 +17,11 @@ const getAll = async (req, res) => {
   res.status(200).json(blogPosts);
 };
 
-module.exports = { insert, getAll };
+const findById = async (req, res) => {
+  const { id } = req.params;
+  const blogPost = await blogPostService.findById(id);
+
+  res.status(200).json(blogPost);
+};
+
+module.exports = { insert, getAll, findById };

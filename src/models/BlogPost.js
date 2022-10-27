@@ -6,11 +6,13 @@ const BlogPost = (sequelize, DataTypes) => {
       autoIncrement: true ,
       allowNull: false,
     },
+    userId: { 
+      type: DataTypes.INTEGER, foreignKey: true 
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
-    userId: { type: DataTypes.INTEGER, foreignKey: true },
   }, {
     underscored: true,
     tableName: 'blog_posts',

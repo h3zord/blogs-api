@@ -6,11 +6,11 @@ const User = (sequelize, DataTypes) => {
       autoIncrement: true ,
       allowNull: false,
     },
-    displayName: DataTypes.STRING,
     email: { 
       type: DataTypes.STRING, 
       unique: true 
     },
+    displayName: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING
   }, {

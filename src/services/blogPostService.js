@@ -77,4 +77,20 @@ const getAll = async () => {
   return blogPosts;
 };
 
-module.exports = { validateBody, validateCategories, insert, getAll };
+const findById = async (id) => {
+  const blogPost = await BlogPost.findByPk(id, { 
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+
+  if (!blogPost) {
+    const e = new Error('Post não existe');
+    e.message = 'Post does not exist';
+    e.status = 404;
+    throw e;
+  }
+
+  return blogPost;
+};
+
+module.exports = { validateBody, validateCategories, insert, getAll, findById };
