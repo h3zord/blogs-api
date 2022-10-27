@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const { Op } = require('sequelize');
 const { sequelize } = require('../models');
+const { validateToken } = require('../utils/jwtUtil');
 
 const { BlogPost, Category, PostCategory, User } = require('../models');
-const { validateToken } = require('../utils/jwtUtil');
 
 const validateBody = (body) => {
   const schema = Joi.object({
@@ -37,23 +37,28 @@ const validateCategories = async (categories) => {
   }));
 };
 
-const insert = async (body) => {
+const insert = async (body, token) => {
   const { title, content, categoryIds } = body;
+  const { id: userId } = validateToken(token);
 
   try {
     const result = await sequelize.transaction(async (t) => {
-      const newBlogPost = await BlogPost.create(
+      const { dataValues } = await BlogPost.create(
         { title, content }, { transaction: t },
       );
 
-      const bodyWithId = categoryIds.map((categoryId) => ({ categoryId, postId: newBlogPost.id }));
+      const bodyWithId = categoryIds.map((categoryId) => ({ categoryId, postId: dataValues.id }));
 
       await PostCategory.bulkCreate(bodyWithId, { transaction: t });
 
-      return newBlogPost;
+      return dataValues;
     });
 
-    return result;
+    const date = new Date();
+
+    const data = { ...result, userId, updated: date, published: date };
+
+    return data;
   } catch (error) {
     console.log(error);
     throw error;
