@@ -112,7 +112,26 @@ const validateBodyUpdate = (body) => {
   return value;
 };
 
-const updateById = async (postId, token, body) => {
+const updateById = async (postId, body) => {
+  await BlogPost.update(body, { where: { id: postId } });
+
+  const blogPost = await BlogPost.findByPk(postId, { 
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+  return blogPost;
+};
+
+const validateAuthorization = async (postId, token) => {
+  const blogPost = await BlogPost.findByPk(postId);
+
+  if (!blogPost) {
+    const e = new Error('Post não encontrado');
+    e.message = 'Post does not exist';
+    e.status = 404;
+    throw e;
+  }
+
   const { id: userTokenId } = validateToken(token);
   const { user_id: userId } = await BlogPost.findByPk(postId);
 
@@ -122,17 +141,20 @@ const updateById = async (postId, token, body) => {
     e.status = 401;
     throw e;
   }
+};
 
-  await BlogPost.update(body, { where: { id: postId } });
-
-  const blogPost = await BlogPost.findByPk(postId, { 
-    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
-      { model: Category, as: 'categories', through: { attributes: [] } }],
-  });
-  console.log(blogPost);
-  return blogPost;
+const deleteById = async (id) => {
+  await BlogPost.destroy({ where: { id } });
 };
 
 module.exports = {
-   validateBody, validateCategories, insert, getAll, findById, updateById, validateBodyUpdate,
+   validateBody, 
+   validateCategories, 
+   insert, 
+   getAll, 
+   findById, 
+   updateById, 
+   validateBodyUpdate,
+   validateAuthorization,
+   deleteById,
 };

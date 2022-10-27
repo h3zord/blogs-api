@@ -27,9 +27,19 @@ const updateById = async (req, res) => {
   const { authorization } = req.headers;
   const { id } = req.params;
   const value = blogPostService.validateBodyUpdate(req.body);
-  const updatedPost = await blogPostService.updateById(id, authorization, value);
+  await blogPostService.validateAuthorization(id, authorization);
+  const updatedPost = await blogPostService.updateById(id, value);
 
   res.status(200).json(updatedPost);
 };
 
-module.exports = { insert, getAll, findById, updateById };
+const deleteById = async (req, res) => {
+  const { authorization } = req.headers;
+  const { id } = req.params;
+  await blogPostService.validateAuthorization(id, authorization);
+  await blogPostService.deleteById(id);
+
+  res.status(204).end();
+};
+
+module.exports = { insert, getAll, findById, updateById, deleteById };
