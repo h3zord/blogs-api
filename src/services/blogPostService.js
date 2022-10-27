@@ -2,6 +2,7 @@ const Joi = require('joi');
 const { sequelize } = require('../models');
 
 const { BlogPost, Category, PostCategory, User } = require('../models');
+const { validateToken } = require('../utils/jwtUtil');
 
 const validateBody = (body) => {
   const schema = Joi.object({
@@ -93,4 +94,45 @@ const findById = async (id) => {
   return blogPost;
 };
 
-module.exports = { validateBody, validateCategories, insert, getAll, findById };
+const validateBodyUpdate = (body) => {
+  const schema = Joi.object({
+    title: Joi.string().required(),
+    content: Joi.string().required(),
+  });
+
+  const { error, value } = schema.validate(body);
+
+  if (error) {
+    const e = new Error('Invalid fields');
+    e.message = 'Some required fields are missing';
+    e.status = 400;
+    throw e;
+  }
+
+  return value;
+};
+
+const updateById = async (postId, token, body) => {
+  const { id: userTokenId } = validateToken(token);
+  const { user_id: userId } = await BlogPost.findByPk(postId);
+
+  if (userTokenId !== userId) {
+    const e = new Error('Não autorizado');
+    e.message = 'Unauthorized user';
+    e.status = 401;
+    throw e;
+  }
+
+  await BlogPost.update(body, { where: { id: postId } });
+
+  const blogPost = await BlogPost.findByPk(postId, { 
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+  console.log(blogPost);
+  return blogPost;
+};
+
+module.exports = {
+   validateBody, validateCategories, insert, getAll, findById, updateById, validateBodyUpdate,
+};

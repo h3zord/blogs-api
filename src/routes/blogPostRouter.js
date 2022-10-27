@@ -12,4 +12,6 @@ router.get('/', blogPostController.getAll);
 
 router.get('/:id', blogPostController.findById);
 
+router.put('/:id', blogPostController.updateById);
+
 module.exports = router;

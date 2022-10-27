@@ -6,7 +6,6 @@ const insert = async (req, res) => {
   await blogPostService.validateCategories(value.categoryIds);
 
   const newBlogPost = await blogPostService.insert(value);
-  console.log(newBlogPost);
   
   res.status(201).json(newBlogPost);
 };
@@ -24,4 +23,13 @@ const findById = async (req, res) => {
   res.status(200).json(blogPost);
 };
 
-module.exports = { insert, getAll, findById };
+const updateById = async (req, res) => {
+  const { authorization } = req.headers;
+  const { id } = req.params;
+  const value = blogPostService.validateBodyUpdate(req.body);
+  const updatedPost = await blogPostService.updateById(id, authorization, value);
+
+  res.status(200).json(updatedPost);
+};
+
+module.exports = { insert, getAll, findById, updateById };
