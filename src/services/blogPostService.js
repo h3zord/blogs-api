@@ -29,9 +29,9 @@ const validateCategories = async (categories) => {
     const category = await Category.findByPk(id);
 
     if (!category) {
-      const e = new Error('Category não existe');
+      const e = new Error('Category does exist');
       e.message = 'one or more "categoryIds" not found';
-      e.status = 400;
+      e.status = 422;
       throw e;
     }
   }));
@@ -93,7 +93,7 @@ const findById = async (id) => {
   if (!blogPost) {
     const e = new Error('Post não existe');
     e.message = 'Post does not exist';
-    e.status = 404;
+    e.status = 400;
     throw e;
   }
 
@@ -134,7 +134,7 @@ const validateAuthorization = async (postId, token) => {
   if (!blogPost) {
     const e = new Error('Post não encontrado');
     e.message = 'Post does not exist';
-    e.status = 404;
+    e.status = 422;
     throw e;
   }
 
@@ -144,7 +144,7 @@ const validateAuthorization = async (postId, token) => {
   if (userTokenId !== userId) {
     const e = new Error('Não autorizado');
     e.message = 'Unauthorized user';
-    e.status = 401;
+    e.status = 409;
     throw e;
   }
 };

@@ -11,7 +11,7 @@ const validateBody = (body) => {
 
   if (error) {
     const e = new Error('Invalid fields');
-    e.message = error.message;
+    e.message = 'Invalid fields';
     e.status = 400;
     throw e;
   }

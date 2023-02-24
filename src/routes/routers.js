@@ -7,12 +7,12 @@ const blogPostRouter = require('./blogPostRouter');
 
 const router = express.Router();
 
-router.use('/login', loginRouter);
+router.use(loginRouter);
 
-router.use('/user', userRouter);
+router.use(userRouter);
 
-router.use('/categories', categoryRouter);
+router.use(categoryRouter);
 
-router.use('/post', blogPostRouter);
+router.use(blogPostRouter);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { validateToken, createToken } = require('../utils/jwtUtil');
+const { createToken } = require('../utils/jwtUtil');
 
 const { User } = require('../models');
 
@@ -15,7 +15,7 @@ const validateBody = (body) => {
 
   if (error) {
     const e = new Error('Invalid fields');
-    e.message = error.message;
+    e.message = 'Invalid fields';
     e.status = 400;
     throw e;
   }
@@ -54,16 +54,22 @@ const findById = async (id) => {
   if (!user) {
     const e = new Error('User não existe');
     e.message = 'User does not exist';
-    e.status = 404;
+    e.status = 400;
     throw e;
   }
 
   return user;
 };
 
-const deleteById = async (token) => {
-  const { id: userTokenId } = validateToken(token);
-  await User.destroy({ where: { id: userTokenId } });
+const deleteById = async (id) => {
+  const data = await User.destroy({ where: { id } });
+  
+  if (!data) {
+    const e = new Error('Delete error');
+    e.message = 'User delete error!';
+    e.status = 400;
+    throw e;
+  }
 };
 
 module.exports = { validateBody, validateEmail, getAll, findById, deleteById };

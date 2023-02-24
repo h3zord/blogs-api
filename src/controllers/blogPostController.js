@@ -27,8 +27,11 @@ const findById = async (req, res) => {
 const updateById = async (req, res) => {
   const { authorization } = req.headers;
   const { id } = req.params;
+
   const value = blogPostService.validateBodyUpdate(req.body);
+
   await blogPostService.validateAuthorization(id, authorization);
+
   const updatedPost = await blogPostService.updateById(id, value);
 
   res.status(200).json(updatedPost);
@@ -37,6 +40,7 @@ const updateById = async (req, res) => {
 const deleteById = async (req, res) => {
   const { authorization } = req.headers;
   const { id } = req.params;
+  
   await blogPostService.validateAuthorization(id, authorization);
   await blogPostService.deleteById(id);
 
@@ -47,7 +51,6 @@ const findByQuery = async (req, res) => {
   const { q } = req.query;
   
   const result = await blogPostService.findByQuery(q);
-  console.log(result);
   res.status(200).json(result);
 };
 

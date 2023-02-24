@@ -5,7 +5,7 @@ const { User } = require('../models');
 
 const validateBody = (body) => {
   const schema = Joi.object({
-     email: Joi.string().email().required(),
+    email: Joi.string().email().required(),
     password: Joi.string().required(),
   });
 
@@ -14,7 +14,7 @@ const validateBody = (body) => {
   if (error) {
     const e = new Error('Usuário ou senha inválidos');
     e.message = 'Some required fields are missing';
-    e.status = 400;
+    e.status = 404;
     throw e;
   }
 

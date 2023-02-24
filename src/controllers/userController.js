@@ -23,8 +23,8 @@ const findById = async (req, res) => {
 };
 
 const deleteById = async (req, res) => {
-  const { authorization } = req.headers;
-  await userService.deleteById(authorization);
+  const { id } = req.params;
+  await userService.deleteById(id);
 
   res.status(204).end();
 };

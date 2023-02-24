@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const createToken = (data) => {
   const token = jwt.sign({ data }, process.env.JWT_SECRET, {
-    expiresIn: '1d',
+    expiresIn: '9999d',
     algorithm: 'HS256', 
   });
 
@@ -14,7 +14,7 @@ const validateToken = (token) => {
   if (!token) {
     const e = new Error('Token obrigatório!');
     e.message = 'Token not found';
-    e.status = 401;
+    e.status = 404;
     throw e;
   }
 
