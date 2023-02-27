@@ -11,7 +11,7 @@ router.post(
   validateToken,
   categoryController.insert
 
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Category']
   // #swagger.summary = 'Criar uma nova categoria'
   // #swagger.description = 'Endpoint para criar uma nova categoria e cadastrar as informações no banco de dados.'
 
@@ -26,11 +26,11 @@ router.post(
     in: 'body',
     description: 'Informações necessárias para criar uma nova categoria.',
     type: 'object',
-    schema: { $ref: "#/definitions/NewCategory" },
+    schema: { $ref: "#/definitions/CreateCategory" },
   } */
 
   /* #swagger.responses[201] = {
-    schema: { $ref: "#/definitions/NewCategory" },
+    schema: { $ref: "#/definitions/CreateCategory" },
     description: 'Requisição para criar uma nova categoria efetuada com sucesso!'
   } */
   
@@ -55,8 +55,8 @@ router.get(
   validateToken,
   categoryController.getAll
 
-  // #swagger.tags = ['Categories']
-  // #swagger.summary = 'Lista todas as categorias'
+  // #swagger.tags = ['Category']
+  // #swagger.summary = 'Listar todas as categorias'
   // #swagger.description = 'Endpoint para listar todas as categorias cadastradas no banco de dados.'
 
   /* #swagger.parameters['authorization'] = {

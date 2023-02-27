@@ -8,8 +8,8 @@ router.post(
   loginController.login
 
   // #swagger.tags = ['Login']
-  // #swagger.summary = 'Realizar o login com email e senha e gerar um token'
-  // #swagger.description = 'Endpoint para consultar se o email e a senha fornecidos coincidem com os cadastrados no banco de dados.'
+  // #swagger.summary = 'Realizar o login com email e senha e em seguida gerar um token'
+  // #swagger.description = 'Endpoint para consultar se o email e a senha fornecidos coincidem com o cadastrado no banco de dados.'
 
   /* #swagger.parameters['info'] = {
     in: 'body',

@@ -5,16 +5,14 @@ const { validateToken } = require('../middlewares/auth');
 
 const router = express.Router();
 
-// router.use(validateToken);
-
 router.post(
   '/post',
   validateToken,
   blogPostController.insert
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Cria um post'
-  // #swagger.description = 'Endpoint para criar um post e salvar as informações no banco de dados.'
+  // #swagger.summary = 'Criar um novo post'
+  // #swagger.description = 'Endpoint para criar um novo post e cadastrar as informações no banco de dados.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
@@ -31,7 +29,7 @@ router.post(
   } */
 
    /* #swagger.responses[201] = {
-    schema: { $ref: "#/definitions/NewPost" },
+    schema: { $ref: "#/definitions/CreatedPost" },
     description: 'Requisição para criar um post efetuada com sucesso!'
   } */
 
@@ -51,7 +49,7 @@ router.post(
   } */
 
   /* #swagger.responses[422] = {
-    schema: { $ref: "#/definitions/CategoryNotFound" },
+    schema: { $ref: "#/definitions/CategoryNotFoundError" },
     description: 'Erro! A requisição falhou! Uma ou mais categorias são inválidas.'
   } */,
 );
@@ -62,7 +60,7 @@ router.get(
   blogPostController.getAll
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Lista todos os posts'
+  // #swagger.summary = 'Listar todos os posts'
   // #swagger.description = 'Endpoint para listar todos os posts cadastrados no banco de dados.'
 
   /* #swagger.parameters['authorization'] = {
@@ -94,8 +92,8 @@ router.get(
   blogPostController.findByQuery
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Lista todos os posts filtradas pela query'
-  // #swagger.description = 'Endpoint para listar todos os posts cadastrados no banco de dados que contenham em seu título ou conteúdo a palavra fornecida pela query.'
+  // #swagger.summary = 'Buscar todos os posts filtradas pela query'
+  // #swagger.description = 'Endpoint para buscar todos os posts cadastrados no banco de dados que contenham em seu título ou conteúdo a palavra fornecida pela query.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
@@ -107,7 +105,7 @@ router.get(
   /* #swagger.parameters['q'] = {
     in: 'query',
     type: 'string',
-    default: 'Foguete',
+    default: 'Ano',
     required: 'true',
     description: 'Digite uma palavra para servir de filtro de busca.'
   } */  
@@ -115,6 +113,11 @@ router.get(
   /* #swagger.responses[200] = {
     schema: { $ref: "#/definitions/PostList" },
     description: 'Requisição para buscar um post pelo título ou conteúdo efetuada com sucesso!'
+  } */
+
+  /* #swagger.responses[400] = {
+    schema: { $ref: "#/definitions/PostDoesNotExistError" },
+    description: 'Erro! A requisição falhou! O token fornecido é inválido.'
   } */
 
   /* #swagger.responses[401] = {
@@ -178,8 +181,8 @@ router.put(
   blogPostController.updateById
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Atualizar um post pelo seu ID'
-  // #swagger.description = 'Endpoint para atualizar um post cadastrado no banco de dados pelo seu ID.'
+  // #swagger.summary = 'Atualizar um post buscando pelo seu ID'
+  // #swagger.description = 'Endpoint para atualizar um post cadastrado no banco de dados buscando pelo seu ID.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
@@ -223,7 +226,7 @@ router.put(
   } */
 
   /* #swagger.responses[409] = {
-    schema: { $ref: "#/definitions/UnauthorizedUser" },
+    schema: { $ref: "#/definitions/UnauthorizedUserError" },
     description: 'Erro! A requisição falhou! Apenas o autor do post tem permissão para atualizar.'
   } */
   
@@ -239,8 +242,8 @@ router.delete(
   blogPostController.deleteById
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Deletar um post pelo seu ID'
-  // #swagger.description = 'Endpoint para deletar um post cadastrado no banco de dados pelo seu ID.'
+  // #swagger.summary = 'Deletar um post buscando pelo seu ID'
+  // #swagger.description = 'Endpoint para deletar um post cadastrado no banco de dados buscando pelo seu ID.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
@@ -271,7 +274,7 @@ router.delete(
   } */
 
   /* #swagger.responses[409] = {
-    schema: { $ref: "#/definitions/UnauthorizedUser" },
+    schema: { $ref: "#/definitions/UnauthorizedUserError" },
     description: 'Erro! A requisição falhou! Apenas o autor do post tem permissão para deletar.'
   } */
 

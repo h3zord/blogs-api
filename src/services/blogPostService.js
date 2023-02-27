@@ -9,7 +9,7 @@ const validateBody = (body) => {
   const schema = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
-    categoryIds: Joi.array().required(),
+    categoryIds: Joi.array().items(Joi.number().integer().positive().required()).required(),
   });
 
   const { error, value } = schema.validate(body);
@@ -153,6 +153,7 @@ const deleteById = async (id) => {
   await BlogPost.destroy({ where: { id } });
 };
 
+// eslint-disable-next-line max-lines-per-function
 const findByQuery = async (query) => {
   if (!query) {
     const blogPosts = await BlogPost.findAll({
@@ -171,7 +172,14 @@ const findByQuery = async (query) => {
     { model: Category, as: 'categories', through: { attributes: [] } }],
   });
 
-  if (!blogPosts) return [];
+  console.log(blogPosts);
+
+  if (!blogPosts.length) {
+    const e = new Error('Post not found');
+    e.message = 'Post does not exist';
+    e.status = 400;
+    throw e;
+  }
 
   return blogPosts;
 };

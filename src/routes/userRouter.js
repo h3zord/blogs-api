@@ -10,7 +10,7 @@ router.post(
 
   // #swagger.tags = ['User']
   // #swagger.summary = 'Criar um novo usuário e gerar um token'
-  // #swagger.description = 'Endpoint para criar um novo usuário e cadastrar as informações no banco de dados.'
+  // #swagger.description = 'Endpoint para criar um novo usuário e cadastrar as informações no banco de dados, e em seguida gerar um token.'
 
   /* #swagger.parameters['info'] = {
     in: 'body',
@@ -34,8 +34,6 @@ router.post(
     description: 'Erro! A requisição falhou! O email informado já está cadastrado no banco de dados.'
   } */,
 );
-
-// router.use(validateToken);
 
 router.get(
   '/user',
@@ -119,8 +117,8 @@ router.delete(
   userController.deleteById
 
   // #swagger.tags = ['User']
-  // #swagger.summary = 'Deletar um usuário pelo seu ID'
-  // #swagger.description = 'Endpoint para deletar um usuário cadastrado no banco de dados pelo seu ID.'
+  // #swagger.summary = 'Deletar um usuário buscando pelo seu ID'
+  // #swagger.description = 'Endpoint para deletar um usuário cadastrado no banco de dados buscando pelo seu ID.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
@@ -137,12 +135,12 @@ router.delete(
   } */
 
   /* #swagger.responses[204] = {
-    description: 'Requisição para deletar um usuário pelo seu ID efetuada com sucesso!'
+    description: 'Requisição para deletar um usuário buscando pelo seu ID efetuada com sucesso!'
   } */
 
   /* #swagger.responses[400] = {
     schema: { $ref: "#/definitions/UserDeleteError" },
-    description: 'Erro! A requisição falhou! Verifique se o usuário a ser excluido existe no banco de dados.'
+    description: 'Erro! A requisição falhou! Verifique se o usuário a ser excluído existe no banco de dados.'
   } */
 
   /* #swagger.responses[401] = {
