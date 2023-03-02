@@ -19,7 +19,7 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
-    command: npm start
+    command: sh -c "npm install; npm start"
 
   db:
     image: postgres:latest
