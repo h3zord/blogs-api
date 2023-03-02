@@ -2,7 +2,7 @@ require('dotenv/config');
 const jwt = require('jsonwebtoken');
 
 const createToken = (data) => {
-  const token = jwt.sign({ data }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secretJWT', {
     expiresIn: '9999d',
     algorithm: 'HS256', 
   });
@@ -19,7 +19,7 @@ const validateToken = (token) => {
   }
 
   try {
-    const { data } = jwt.verify(token, process.env.JWT_SECRET);
+    const { data } = jwt.verify(token, process.env.JWT_SECRET || 'secretJWT');
     return data;
   } catch (error) {
     const e = new Error('Token inválido');

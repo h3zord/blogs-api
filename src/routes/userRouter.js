@@ -37,7 +37,7 @@ router.post(
 
 router.get(
   '/user',
-  // validateToken,
+  validateToken,
   userController.getAll
   
   // #swagger.tags = ['User']
