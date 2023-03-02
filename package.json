@@ -23,7 +23,6 @@
   "main": "src/server.js",
   "scripts": {
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "prestart": "npm run db:reset",
     "start": "node ./swagger.js && node .",
     "start:test": "API_PORT=3030 NODE_ENV=test npm start",
     "kill:test": "if lsof -t -i:3030; then kill -9 $(lsof -t -i:3030); fi",
