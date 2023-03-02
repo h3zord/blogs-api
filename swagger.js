@@ -6,7 +6,7 @@ const doc = {
     title: 'Blogs API',
     description: 'Esta documentação é destinada ao projeto Blogs API.',
   },
-  host: 'blogs-api.up.railway.app',
+  host: 'productive-pan-production.up.railway.app',
   basePath: '/',
   schemes: ['https', 'http'],
   consumes: ['application/json'],
