@@ -17,11 +17,4 @@ const options = {
   },
 };
 
-module.exports = {
-  development: {
-    ...options,
-  },
-  test: {
-    ...options,
-  },
-};
+module.exports = options;
