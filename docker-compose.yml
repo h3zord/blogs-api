@@ -2,7 +2,7 @@ version: '3'
 
 services:
   node:
-    image: node:latest
+    image: node:alpine
     container_name: node-app
     restart: always
     ports:

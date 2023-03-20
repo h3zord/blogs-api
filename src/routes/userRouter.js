@@ -9,19 +9,19 @@ router.post(
   userController.insert
 
   // #swagger.tags = ['User']
-  // #swagger.summary = 'Criar um novo usuário e gerar um token'
-  // #swagger.description = 'Endpoint para criar um novo usuário e cadastrar as informações no banco de dados, e em seguida gerar um token.'
+  // #swagger.summary = 'Cadastrar um novo usuário e gerar um token'
+  // #swagger.description = 'Endpoint para cadastrar um novo usuário e cadastrar as informações no banco de dados, e em seguida gerar um token.'
 
   /* #swagger.parameters['info'] = {
     in: 'body',
-    description: 'Informações necessárias para criar um novo usuário.',
+    description: 'Informações necessárias para cadastrar um novo usuário.',
     type: 'object',
     schema: { $ref: "#/definitions/CreateUser" },
   } */
 
   /* #swagger.responses[201] = {
     schema: { $ref: "#/definitions/ValidToken" },
-    description: 'Requisição para criar um novo usuário efetuada com sucesso!'
+    description: 'Requisição para cadastrar um novo usuário efetuada com sucesso!'
   } */
   
   /* #swagger.responses[400] = {
@@ -46,7 +46,7 @@ router.get(
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
-    description: 'Token necessário para criar um novo usuário.',
+    description: 'Token necessário para cadastrar um novo usuário.',
     type: 'string',
     default: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImltYWdlIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy8xLzE4L0xld2lzX0hhbWlsdG9uXzIwMTZfTWFsYXlzaWFfMi5qcGcifSwiaWF0IjoxNjc3MjU2Mzc4LCJleHAiOjI1NDExNjk5Nzh9.zQsfHi3KRyF_jjzLq9rMGm3kMxzpbiQGsHE3Dr5IPi4'
   } */

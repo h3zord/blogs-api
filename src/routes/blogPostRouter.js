@@ -11,26 +11,26 @@ router.post(
   blogPostController.insert
 
   // #swagger.tags = ['Post']
-  // #swagger.summary = 'Criar um novo post'
-  // #swagger.description = 'Endpoint para criar um novo post e cadastrar as informações no banco de dados.'
+  // #swagger.summary = 'Cadastra um novo post'
+  // #swagger.description = 'Endpoint para cadastrar um novo post e cadastrar as informações no banco de dados.'
 
   /* #swagger.parameters['authorization'] = {
     in: 'header',
-    description: 'Token necessário para criar uma novo post.',
+    description: 'Token necessário para cadastrar uma novo post.',
     type: 'string',
     default: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImltYWdlIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy8xLzE4L0xld2lzX0hhbWlsdG9uXzIwMTZfTWFsYXlzaWFfMi5qcGcifSwiaWF0IjoxNjc3MjU2Mzc4LCJleHAiOjI1NDExNjk5Nzh9.zQsfHi3KRyF_jjzLq9rMGm3kMxzpbiQGsHE3Dr5IPi4'
   } */
 
   /* #swagger.parameters['info'] = {
     in: 'body',
-    description: 'Informações necessárias para criar um post.',
+    description: 'Informações necessárias para cadastrar um post.',
     type: 'object',
     schema: { $ref: "#/definitions/CreatePost" },
   } */
 
    /* #swagger.responses[201] = {
     schema: { $ref: "#/definitions/CreatedPost" },
-    description: 'Requisição para criar um post efetuada com sucesso!'
+    description: 'Requisição para cadastrar um post efetuada com sucesso!'
   } */
 
   /* #swagger.responses[400] = {
