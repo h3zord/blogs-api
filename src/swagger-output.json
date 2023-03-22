@@ -80,13 +80,13 @@
         "tags": [
           "User"
         ],
-        "summary": "Criar um novo usuário e gerar um token",
-        "description": "Endpoint para criar um novo usuário e cadastrar as informações no banco de dados, e em seguida gerar um token.",
+        "summary": "Cadastrar um novo usuário e gerar um token",
+        "description": "Endpoint para cadastrar um novo usuário e cadastrar as informações no banco de dados, e em seguida gerar um token.",
         "parameters": [
           {
             "name": "info",
             "in": "body",
-            "description": "Informações necessárias para criar um novo usuário.",
+            "description": "Informações necessárias para cadastrar um novo usuário.",
             "schema": {
               "$ref": "#/definitions/CreateUser"
             }
@@ -94,7 +94,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Requisição para criar um novo usuário efetuada com sucesso!",
+            "description": "Requisição para cadastrar um novo usuário efetuada com sucesso!",
             "schema": {
               "$ref": "#/definitions/ValidToken"
             }
@@ -123,7 +123,7 @@
           {
             "name": "authorization",
             "in": "header",
-            "description": "Token necessário para criar um novo usuário.",
+            "description": "Token necessário para cadastrar um novo usuário.",
             "type": "string",
             "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImltYWdlIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy8xLzE4L0xld2lzX0hhbWlsdG9uXzIwMTZfTWFsYXlzaWFfMi5qcGcifSwiaWF0IjoxNjc3MjU2Mzc4LCJleHAiOjI1NDExNjk5Nzh9.zQsfHi3KRyF_jjzLq9rMGm3kMxzpbiQGsHE3Dr5IPi4"
           }
@@ -252,20 +252,20 @@
         "tags": [
           "Category"
         ],
-        "summary": "Criar uma nova categoria",
-        "description": "Endpoint para criar uma nova categoria e cadastrar as informações no banco de dados.",
+        "summary": "Cadastrar uma nova categoria",
+        "description": "Endpoint para cadastrar uma nova categoria e cadastrar as informações no banco de dados.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
-            "description": "Token necessário para criar uma nova categoria.",
+            "description": "Token necessário para cadastrar uma nova categoria.",
             "type": "string",
             "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImltYWdlIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy8xLzE4L0xld2lzX0hhbWlsdG9uXzIwMTZfTWFsYXlzaWFfMi5qcGcifSwiaWF0IjoxNjc3MjU2Mzc4LCJleHAiOjI1NDExNjk5Nzh9.zQsfHi3KRyF_jjzLq9rMGm3kMxzpbiQGsHE3Dr5IPi4"
           },
           {
             "name": "info",
             "in": "body",
-            "description": "Informações necessárias para criar uma nova categoria.",
+            "description": "Informações necessárias para cadastrar uma nova categoria.",
             "schema": {
               "$ref": "#/definitions/CreateCategory"
             }
@@ -273,7 +273,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Requisição para criar uma nova categoria efetuada com sucesso!",
+            "description": "Requisição para cadastrar uma nova categoria efetuada com sucesso!",
             "schema": {
               "$ref": "#/definitions/CreateCategory"
             }
@@ -340,20 +340,20 @@
         "tags": [
           "Post"
         ],
-        "summary": "Criar um novo post",
-        "description": "Endpoint para criar um novo post e cadastrar as informações no banco de dados.",
+        "summary": "Cadastra um novo post",
+        "description": "Endpoint para cadastrar um novo post e cadastrar as informações no banco de dados.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
-            "description": "Token necessário para criar uma novo post.",
+            "description": "Token necessário para cadastrar uma novo post.",
             "type": "string",
             "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImltYWdlIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy8xLzE4L0xld2lzX0hhbWlsdG9uXzIwMTZfTWFsYXlzaWFfMi5qcGcifSwiaWF0IjoxNjc3MjU2Mzc4LCJleHAiOjI1NDExNjk5Nzh9.zQsfHi3KRyF_jjzLq9rMGm3kMxzpbiQGsHE3Dr5IPi4"
           },
           {
             "name": "info",
             "in": "body",
-            "description": "Informações necessárias para criar um post.",
+            "description": "Informações necessárias para cadastrar um post.",
             "schema": {
               "$ref": "#/definitions/CreatePost"
             }
@@ -361,7 +361,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Requisição para criar um post efetuada com sucesso!",
+            "description": "Requisição para cadastrar um post efetuada com sucesso!",
             "schema": {
               "$ref": "#/definitions/CreatedPost"
             }
