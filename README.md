@@ -13,7 +13,7 @@ O <strong>Blogs API</strong> é uma aplicação RESTful projetada para gerenciar
 
 ## O que foi desenvolvido?
 
-O <strong>Blogs API</strong> é uma aplicação de gerenciamento de blogs que foi criada com javaScript. Para rodar o código sem depender do navegador, o docker foi utilizado com dois containers, sendo um para o node.js e outro para o banco de dados mySQL.
+O <strong>Blogs API</strong> é uma aplicação de gerenciamento de blogs que foi criada com javascript. Para rodar o código sem depender do navegador, o docker foi utilizado com dois containers, sendo um para o node.js e outro para o banco de dados postgreSQL.
 
 O framework express.js foi usado para gerenciar as rotas, tratar as requisições HTTP e definir middlewares. O JWT (JSON Web Token) foi utilizado para autenticar as requisições que necessitam de um token válido, que é gerado após o login. Além disso, a biblioteca joi foi aplicada para validar os dados que são enviados através do corpo das requisições.
 
