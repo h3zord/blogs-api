@@ -30,7 +30,7 @@ Os endpoints dessa aplicação são capazes de realizar operações CRUD (Create
 - PostgreSQL
 - Sequelize
 
-## Instalação e execução com Docker
+## Instalação e execução com docker
 
 ### 1 - Clone o repositório:
 ```
