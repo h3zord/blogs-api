@@ -13,15 +13,15 @@ O <strong>Blogs API</strong> é uma aplicação RESTful projetada para gerenciar
 
 ## O que foi desenvolvido?
 
-O <strong>Blogs API</strong> é uma aplicação de gerenciamento de blogs que foi criada com JavaScript. Para rodar o código sem depender do navegador, o Docker foi utilizado com dois containers, sendo um para o Node.js e outro para o banco de dados MySQL.
+O <strong>Blogs API</strong> é uma aplicação de gerenciamento de blogs que foi criada com javaScript. Para rodar o código sem depender do navegador, o docker foi utilizado com dois containers, sendo um para o node.js e outro para o banco de dados mySQL.
 
-O framework Express.js foi usado para gerenciar as rotas, tratar as requisições HTTP e definir middlewares. O JWT (JSON Web Token) foi utilizado para autenticar as requisições que necessitam de um token válido, que é gerado após o login. Além disso, a biblioteca Joi foi aplicada para validar os dados que são enviados através do corpo das requisições.
+O framework express.js foi usado para gerenciar as rotas, tratar as requisições HTTP e definir middlewares. O JWT (JSON Web Token) foi utilizado para autenticar as requisições que necessitam de um token válido, que é gerado após o login. Além disso, a biblioteca joi foi aplicada para validar os dados que são enviados através do corpo das requisições.
 
-A organização de diretórios adotada foi o modelo MSC (Model, Service e Controller) e o ORM (Object-Relational Mapping) Sequelize foi utilizado para interagir com o banco de dados, permitindo a definição de relacionamentos entre as tabelas.
+A organização de diretórios adotada foi o modelo MSC (Model, Service e Controller) e o ORM (Object-Relational Mapping) sequelize foi utilizado para interagir com o banco de dados, permitindo a definição de relacionamentos entre as tabelas.
 
 Os endpoints dessa aplicação são capazes de realizar operações CRUD (Create, Read, Update e Delete) nos dados.
 
-## Linguagens e ferramentas:
+## Linguagens e ferramentas
 - Docker
 - Node.js
 - Javascript
@@ -30,7 +30,7 @@ Os endpoints dessa aplicação são capazes de realizar operações CRUD (Create
 - PostgreSQL
 - Sequelize
 
-## Instalação e execução com Docker:
+## Instalação e execução com Docker
 
 ### 1 - Clone o repositório:
 ```
